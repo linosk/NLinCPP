@@ -1,10 +1,11 @@
-#include <vector>
+#include <array>
 
 class Matrix{
 	public:
 		int Rows;
 		int Columns;
-		std::vector<int> Row(Rows,0);
+		//std::array<std::array<int,Matrix::Columns>,Matrix::Rows> Matrix;
+		std::array < std::array<int, Matrix::Rows>, 3 > array_name ;
 		
 };
 
