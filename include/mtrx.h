@@ -23,6 +23,9 @@ class MTRX{
 	 	    void Fill(int Number);
 };
 
+//Compares matrices, if any pair of elements do not match false is returned
+bool Compare(MTRX A, MTRX B);
+
 //This could be a bad practice, object returning function outside a class definition
 
 //Creates a matrix that is a sum of other two matrices

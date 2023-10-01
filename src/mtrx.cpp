@@ -1,4 +1,5 @@
-#include "mtrx.h"
+//#include "mtrx.h"
+#include "../include/mtrx.h"
 
 MTRX::MTRX(int M, int N) : Rows(M), Columns(N), Matrix(M,std::vector<int>(N,0)){}
 
@@ -17,6 +18,22 @@ void MTRX::Fill(int Number){
             j = Number;
         }
     }
+}
+
+bool Compare(MTRX A, MTRX B){
+    if((A.Rows != B.Rows) || (A.Columns != B.Columns)){
+		throw std::invalid_argument("Matrices's dimensions did not match.");
+	}
+
+    for(int i=0;i<A.Rows;i++){
+        for(int j=0;j<A.Columns;j++){
+            if(A.Matrix[i][j]!=B.Matrix[i][j]){
+                return false;
+            }
+        }
+    }
+
+    return true;
 }
 
 MTRX Add(MTRX A, MTRX B){
