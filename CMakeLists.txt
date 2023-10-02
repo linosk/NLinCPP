@@ -11,3 +11,30 @@ file(GLOB_RECURSE MY_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/
 add_executable(NNinCPP "${MY_SOURCES}")
 
 target_include_directories(NNinCPP PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+
+project(testNNinCPP)
+
+file(GLOB_RECURSE TEST_MY_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+EXCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+
+file(GLOB_RECURSE MY_TESTS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/test/*.cpp")
+
+add_executable(testNNinCPP "${TEST_MY_SOURCES}")
+
+add_executable(testNNinCPP "${MY_TESTS}")
+
+target_include_directories(testNNinCPP PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+
+include(FetchContent)
+FetchContent_Declare(
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest
+    GIT_TAG release-1.11.0
+)
+FetchContent_GetProperties(googletest)
+if(NOT googletest_POPULATED)
+    FetchContent_Populate(googletest)
+    add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BUILD_DIR})
+endif()
+
+target_link_libraries(testNNinCPP gtest_main gmock_main)

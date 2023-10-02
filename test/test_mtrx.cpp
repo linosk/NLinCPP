@@ -1,8 +1,6 @@
 #include <gtest/gtest.h>
 
-//#include "mtrx.h"
-#include "../include/mtrx.h"
-#include "../src/mtrx.cpp"
+#include "mtrx.h"
 
 TEST(TEST_mtrx,MTRX_Fill){
 
