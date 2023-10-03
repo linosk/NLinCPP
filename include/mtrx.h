@@ -30,5 +30,6 @@ bool Compare(MTRX A, MTRX B);
 
 //Creates a matrix that is a sum of other two matrices
 MTRX Add(MTRX A, MTRX B);
+MTRX Multilpication(MTRX A, MTRX B);
 
 #endif
