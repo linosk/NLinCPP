@@ -14,14 +14,15 @@ target_include_directories(NNinCPP PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 project(testNNinCPP)
 
-file(GLOB_RECURSE TEST_MY_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
-EXCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+set(EXCLUDE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+
+list(REMOVE_ITEM MY_SOURCES "${EXCLUDE_FILE}")
 
 file(GLOB_RECURSE MY_TESTS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/test/*.cpp")
 
-add_executable(testNNinCPP "${TEST_MY_SOURCES}")
+set(ALL_TEST_SOURCES ${MY_SOURCES} ${MY_TESTS})
 
-add_executable(testNNinCPP "${MY_TESTS}")
+add_executable(testNNinCPP "${ALL_TEST_SOURCES}")
 
 target_include_directories(testNNinCPP PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
