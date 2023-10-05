@@ -2,6 +2,7 @@
 
 int main(int argc, char** argv){
 
+/*
 	MTRX M(2,4);
 
 	std::cout<<M.Rows<<std::endl;
@@ -21,6 +22,20 @@ int main(int argc, char** argv){
 	MTRX C = Add(A,B);
 
 	C.Print();
+*/
+
+	MTRX A(3,3);
+    A.Fill(1);
+
+    MTRX B(3,3);
+    B.Fill(2);
+
+    MTRX C(3,3);
+    C.Fill(6);
+
+    MTRX D = Dot_product(A,B);
+
+	D.Print();
 
 	return 0;
 }

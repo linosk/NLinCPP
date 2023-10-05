@@ -51,3 +51,20 @@ MTRX Add(MTRX A, MTRX B){
 
 	return C;
 }
+
+MTRX Dot_product(MTRX A, MTRX B){
+    if(A.Rows != B.Columns){
+		throw std::invalid_argument("Matrices's dimensions did not match.");
+	}
+
+    MTRX C(A.Rows,B.Columns);
+    C.Fill(0);
+
+    for(int i=0;i<A.Rows;i++){
+        for (int j=0;j<A.Rows;j++){
+            C.Matrix[i][j] = C.Matrix[i][j] + A.Matrix[i][j]*B.Matrix[j][i];
+        }
+    }
+
+    return C;    
+}
