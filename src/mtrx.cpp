@@ -59,7 +59,8 @@ MTRX Dot_product(MTRX A, MTRX B){
 
     MTRX C(A.Rows,B.Columns);
     C.Fill(0);
-
+	int k =0;
+	int l =0;
     for(int i=0;i<A.Rows;i++){
         for (int j=0;j<A.Rows;j++){
             C.Matrix[i][j] = C.Matrix[i][j] + A.Matrix[i][j]*B.Matrix[j][i];
