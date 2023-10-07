@@ -24,14 +24,18 @@ int main(int argc, char** argv){
 	C.Print();
 */
 
-	MTRX A(3,3);
+	MTRX A(1,2);
     A.Fill(1);
+	A.Print();
+	std::cout<<A.Rows<<std::endl;
 
-    MTRX B(3,3);
+    MTRX B(2,2);
     B.Fill(2);
+	B.Print();
+	std::cout<<B.Columns<<std::endl;
 
-    MTRX C(3,3);
-    C.Fill(6);
+    //MTRX C(1,2);
+    //C.Fill(4);
 
     MTRX D = Dot_product(A,B);
 

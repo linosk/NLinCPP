@@ -1,5 +1,4 @@
-//#include "mtrx.h"
-#include "../include/mtrx.h"
+#include "mtrx.h"
 
 MTRX::MTRX(int M, int N) : Rows(M), Columns(N), Matrix(M,std::vector<int>(N,0)){}
 
@@ -53,17 +52,17 @@ MTRX Add(MTRX A, MTRX B){
 }
 
 MTRX Dot_product(MTRX A, MTRX B){
-    if(A.Rows != B.Columns){
+    if(A.Columns != B.Rows){
 		throw std::invalid_argument("Matrices's dimensions did not match.");
 	}
 
     MTRX C(A.Rows,B.Columns);
     C.Fill(0);
-	int k =0;
-	int l =0;
     for(int i=0;i<A.Rows;i++){
-        for (int j=0;j<A.Rows;j++){
-            C.Matrix[i][j] = C.Matrix[i][j] + A.Matrix[i][j]*B.Matrix[j][i];
+        for (int j=0;j<B.Columns;j++){
+            for(int k=0;k<B.Rows;k++){
+                C.Matrix[i][j] = C.Matrix[i][j] + A.Matrix[i][k] * B.Matrix[k][j];
+            }
         }
     }
 
