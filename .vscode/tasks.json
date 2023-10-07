@@ -1,0 +1,40 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+	  {
+		"label": "create output directory",
+		"type": "shell",
+		"command": "mkdir",
+		"args": ["-p", "${workspaceFolder}/bin"],
+		"group": {
+		  "kind": "build",
+		  "isDefault": true
+		},
+		"presentation": {
+		  "reveal": "always",
+		  "panel": "new"
+		}
+	  },
+	  {
+		"label": "build NNinCPP",
+		"type": "shell",
+		"command": "g++",
+		"args": [
+		  "-g",
+		  "-o", "${workspaceFolder}/bin/NNinCPP",
+		  "-I${workspaceFolder}/include",
+		  "${workspaceFolder}/src/*.cpp"
+		],
+		"group": {
+		  "kind": "build",
+		  "isDefault": true
+		},
+		"presentation": {
+		  "reveal": "always",
+		  "panel": "new"
+		},
+		"dependsOn": ["create output directory"]
+	  }
+	]
+  }
+  
