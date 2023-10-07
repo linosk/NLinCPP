@@ -6,6 +6,11 @@ set(CMAKE_CXX_COMPILER g++)
 project(NNinCPP)
 set(CMAKE_CXX_STANDARD 17)
 
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
+
+#target_compile_options(NNinCPP PRIVATE ${MY_CXX_FLAGS})
+
 file(GLOB_RECURSE MY_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
 add_executable(NNinCPP "${MY_SOURCES}")
