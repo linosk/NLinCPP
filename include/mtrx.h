@@ -21,6 +21,9 @@ class MTRX{
 
             //Fill matrix with specified number
 	 	    void Fill(int Number);
+
+            //If this is inside class, should not other be as well?
+            MTRX Transponse();
 };
 
 //Compares matrices, if any pair of elements do not match false is returned

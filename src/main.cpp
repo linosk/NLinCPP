@@ -24,22 +24,39 @@ int main(int argc, char** argv){
 	C.Print();
 */
 
-	MTRX A(1,2);
-    A.Fill(1);
-	A.Print();
-	std::cout<<A.Rows<<std::endl;
-
-    MTRX B(2,2);
-    B.Fill(2);
-	B.Print();
-	std::cout<<B.Columns<<std::endl;
-
+	//MTRX A(1,2);
+    //A.Fill(1);
+	//A.Print();
+	//std::cout<<A.Rows<<std::endl;
+    //MTRX B(2,2);
+    //B.Fill(2);
+	//B.Print();
+	//std::cout<<B.Columns<<std::endl;
     //MTRX C(1,2);
     //C.Fill(4);
+    //MTRX D = Dot_product(A,B);
+	//D.Print();
 
-    MTRX D = Dot_product(A,B);
+	MTRX A(2,3);
+    A.Matrix[0][0] = 0;
+    A.Matrix[0][1] = 1;
+    A.Matrix[0][2] = 2;
+    A.Matrix[1][0] = 3;
+    A.Matrix[1][1] = 4;
+    A.Matrix[1][2] = 5;
 
-	D.Print();
+    A.Transponse();
+
+    MTRX B(3,2);
+    B.Matrix[0][0] = 0;
+    B.Matrix[0][1] = 3;
+    B.Matrix[1][0] = 1;
+    B.Matrix[1][1] = 4;
+    B.Matrix[2][0] = 2;
+    B.Matrix[2][1] = 5;
+
+	A.Print();
+	B.Print();
 
 	return 0;
 }

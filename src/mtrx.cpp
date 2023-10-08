@@ -19,6 +19,18 @@ void MTRX::Fill(int Number){
     }
 }
 
+MTRX MTRX::Transponse(){
+    MTRX New(Columns,Rows);
+
+    for(int i=0;i<Columns;i++){
+        for(int j=0;j<Rows;j++){
+            New.Matrix[i][j] = Matrix[j][i];
+        }
+    }
+
+    return New;
+}
+
 bool Compare(MTRX A, MTRX B){
     if((A.Rows != B.Rows) || (A.Columns != B.Columns)){
 		throw std::invalid_argument("Matrices's dimensions did not match.");
