@@ -9,3 +9,9 @@ Learning about neural network.
 - cd build
 - cmake -S ../ -B .
 - make
+
+# Run
+./NNinCPP
+
+# Test
+./testNNinCPP
