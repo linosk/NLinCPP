@@ -35,4 +35,7 @@ bool Compare(MTRX A, MTRX B);
 MTRX Add(MTRX A, MTRX B);
 MTRX Dot_product(MTRX A, MTRX B);
 
+//Compare with method of MTRX
+MTRX Transponse(MTRX A);
+
 #endif
