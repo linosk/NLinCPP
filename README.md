@@ -5,8 +5,7 @@ Simple neural network in C++
 Learning about neural network
 
 # Build
-Run:
-mkdir build
-cd build
-cmake -S ../ -B .
-make
+mkdir build;
+cd build;
+cmake -S ../ -B .;
+make;
