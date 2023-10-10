@@ -22,17 +22,17 @@ TEST(TEST_mtrx,MTRX_Transpose){
     A.Matrix[1][1] = 4;
     A.Matrix[1][2] = 5;
 
-    A.Transponse();
+	MTRX B = Transponse(A);
 
-    MTRX B(3,2);
-    B.Matrix[0][0] = 0;
-    B.Matrix[0][1] = 3;
-    B.Matrix[1][0] = 1;
-    B.Matrix[1][1] = 4;
-    B.Matrix[2][0] = 2;
-    B.Matrix[2][1] = 5;
+    MTRX C(3,2);
+    C.Matrix[0][0] = 0;
+    C.Matrix[0][1] = 3;
+    C.Matrix[1][0] = 1;
+    C.Matrix[1][1] = 4;
+    C.Matrix[2][0] = 2;
+    C.Matrix[2][1] = 5;
 
-    EXPECT_TRUE(Compare(A,B));
+    EXPECT_TRUE(Compare(B,C));
 }
 
 TEST(TEST_mtrx,MTRX_Add){

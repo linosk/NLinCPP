@@ -80,3 +80,16 @@ MTRX Dot_product(MTRX A, MTRX B){
 
     return C;    
 }
+
+MTRX Transponse(MTRX A){
+    MTRX B(A.Columns,A.Rows);
+    B.Fill(0);
+
+    for(int i=0;i<B.Rows;i++){
+        for(int j=0;j<B.Columns;j++){
+            B.Matrix[i][j] = A.Matrix[j][i];
+        }
+    }
+
+    return B;
+}

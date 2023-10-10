@@ -45,7 +45,9 @@ int main(int argc, char** argv){
     A.Matrix[1][1] = 4;
     A.Matrix[1][2] = 5;
 
-    A.Transponse();
+    //A.Transponse();
+
+	MTRX C = Transponse(A);
 
     MTRX B(3,2);
     B.Matrix[0][0] = 0;
@@ -55,8 +57,17 @@ int main(int argc, char** argv){
     B.Matrix[2][0] = 2;
     B.Matrix[2][1] = 5;
 
-	A.Print();
+	C.Print();
 	B.Print();
+
+	std::cout<<A.Rows;
+	std::cout<<A.Columns;
+
+	std::cout<<B.Rows;
+	std::cout<<B.Columns;
+
+	std::cout<<C.Rows;
+	std::cout<<C.Columns;
 
 	return 0;
 }
