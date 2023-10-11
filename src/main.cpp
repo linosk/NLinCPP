@@ -47,7 +47,7 @@ int main(int argc, char** argv){
 
     //A.Transponse();
 
-	MTRX C = Transponse(A);
+	MTRX C = Transpose(A);
 
     MTRX B(3,2);
     B.Matrix[0][0] = 0;

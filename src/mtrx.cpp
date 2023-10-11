@@ -19,18 +19,6 @@ void MTRX::Fill(int Number){
     }
 }
 
-MTRX MTRX::Transponse(){
-    MTRX New(Columns,Rows);
-
-    for(int i=0;i<Columns;i++){
-        for(int j=0;j<Rows;j++){
-            New.Matrix[i][j] = Matrix[j][i];
-        }
-    }
-
-    return New;
-}
-
 bool Compare(MTRX A, MTRX B){
     if((A.Rows != B.Rows) || (A.Columns != B.Columns)){
 		throw std::invalid_argument("Matrices's dimensions did not match.");
@@ -81,7 +69,7 @@ MTRX Dot_product(MTRX A, MTRX B){
     return C;    
 }
 
-MTRX Transponse(MTRX A){
+MTRX Transpose(MTRX A){
     MTRX B(A.Columns,A.Rows);
     B.Fill(0);
 

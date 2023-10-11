@@ -22,7 +22,7 @@ TEST(TEST_mtrx,MTRX_Transpose){
     A.Matrix[1][1] = 4;
     A.Matrix[1][2] = 5;
 
-	MTRX B = Transponse(A);
+	MTRX B = Transpose(A);
 
     MTRX C(3,2);
     C.Matrix[0][0] = 0;
