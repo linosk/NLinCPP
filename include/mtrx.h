@@ -5,6 +5,12 @@
 #include <iostream>
 #include <stdexcept>
 
+typedef struct Dimensions Dimensions; 
+
+typedef std::vector<float> Vector;
+
+typedef std::vector<Vector> Matrix;
+
 class MTRX{
     public:
             //Number of rows
@@ -12,7 +18,7 @@ class MTRX{
             // Number of columns
 		    int Columns;
             //Actual matrix
-		    std::vector<std::vector<int>> Matrix;
+		    Matrix Matrix_proper;
 
 		    MTRX(int M, int N);
 
@@ -22,6 +28,10 @@ class MTRX{
             //Fill matrix with specified number
 	 	    void Fill(int Number);
 
+            Dimensions Get_size();
+
+            void Resize(int New_rows, int New_columns);
+
 };
 
 //Compares matrices, if any pair of elements do not match false is returned
@@ -29,6 +39,7 @@ bool Compare(MTRX A, MTRX B);
 
 //This could be a bad practice, object returning function outside a class definition
 
+//MAYBE JUST PASS MATRIX_PROPER
 //Creates a matrix that is a sum of other two matrices
 MTRX Add(MTRX A, MTRX B);
 MTRX Dot_product(MTRX A, MTRX B);

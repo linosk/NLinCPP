@@ -1,9 +1,16 @@
 #include "mtrx.h"
 
-MTRX::MTRX(int M, int N) : Rows(M), Columns(N), Matrix(M,std::vector<int>(N,0)){}
+typedef struct Dimensions{
+    int Number_rows;
+    int Number_columns;
+} Dimensions;
+
+MTRX::MTRX(int M, int N) : Rows(M), Columns(N){
+    Matrix_proper.resize(Rows,Vector(Columns));
+}
 
 void MTRX::Print(){
-    for(auto i : Matrix){
+    for(auto i : Matrix_proper){
 		for(auto j : i){
 			std::cout<<j;
 		}
@@ -12,12 +19,33 @@ void MTRX::Print(){
 }
 
 void MTRX::Fill(int Number){
-    for(auto& i : Matrix){
+    for(auto& i : Matrix_proper){
         for (auto& j : i){
             j = Number;
         }
     }
 }
+
+Dimensions MTRX::Get_size(){
+
+    Dimensions Dimensions;
+    Dimensions.Number_rows = Rows;
+    Dimensions.Number_columns = Columns;
+
+    return Dimensions;
+}
+
+void MTRX::Resize(int New_rows, int New_columns){
+    
+    Matrix_proper.resize(New_rows);
+    for (int i = 0 ;i<New_rows;i++){
+        Matrix_proper[i].resize(New_columns);
+    }
+
+    Rows=New_rows;
+    Columns=New_columns;
+}
+
 
 bool Compare(MTRX A, MTRX B){
     if((A.Rows != B.Rows) || (A.Columns != B.Columns)){
@@ -26,7 +54,7 @@ bool Compare(MTRX A, MTRX B){
 
     for(int i=0;i<A.Rows;i++){
         for(int j=0;j<A.Columns;j++){
-            if(A.Matrix[i][j]!=B.Matrix[i][j]){
+            if(A.Matrix_proper[i][j]!=B.Matrix_proper[i][j]){
                 return false;
             }
         }
@@ -44,7 +72,7 @@ MTRX Add(MTRX A, MTRX B){
 
     for(int i=0;i<C.Rows;i++){
         for(int j=0;j<C.Columns;j++){
-            C.Matrix[i][j] = A.Matrix[i][j] + B.Matrix[i][j];
+            C.Matrix_proper[i][j] = A.Matrix_proper[i][j] + B.Matrix_proper[i][j];
         }
     }
 
@@ -61,7 +89,7 @@ MTRX Dot_product(MTRX A, MTRX B){
     for(int i=0;i<A.Rows;i++){
         for (int j=0;j<B.Columns;j++){
             for(int k=0;k<B.Rows;k++){
-                C.Matrix[i][j] = C.Matrix[i][j] + A.Matrix[i][k] * B.Matrix[k][j];
+                C.Matrix_proper[i][j] = C.Matrix_proper[i][j] + A.Matrix_proper[i][k] * B.Matrix_proper[k][j];
             }
         }
     }
@@ -75,7 +103,7 @@ MTRX Transpose(MTRX A){
 
     for(int i=0;i<B.Rows;i++){
         for(int j=0;j<B.Columns;j++){
-            B.Matrix[i][j] = A.Matrix[j][i];
+            B.Matrix_proper[i][j] = A.Matrix_proper[j][i];
         }
     }
 
