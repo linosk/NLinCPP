@@ -38,24 +38,24 @@ int main(int argc, char** argv){
 	//D.Print();
 
 	MTRX A(2,3);
-    A.Matrix[0][0] = 0;
-    A.Matrix[0][1] = 1;
-    A.Matrix[0][2] = 2;
-    A.Matrix[1][0] = 3;
-    A.Matrix[1][1] = 4;
-    A.Matrix[1][2] = 5;
+    A.Matrix_proper[0][0] = 0;
+    A.Matrix_proper[0][1] = 1;
+    A.Matrix_proper[0][2] = 2;
+    A.Matrix_proper[1][0] = 3;
+    A.Matrix_proper[1][1] = 4;
+    A.Matrix_proper[1][2] = 5;
 
     //A.Transponse();
 
 	MTRX C = Transpose(A);
 
     MTRX B(3,2);
-    B.Matrix[0][0] = 0;
-    B.Matrix[0][1] = 3;
-    B.Matrix[1][0] = 1;
-    B.Matrix[1][1] = 4;
-    B.Matrix[2][0] = 2;
-    B.Matrix[2][1] = 5;
+    B.Matrix_proper[0][0] = 0;
+    B.Matrix_proper[0][1] = 3;
+    B.Matrix_proper[1][0] = 1;
+    B.Matrix_proper[1][1] = 4;
+    B.Matrix_proper[2][0] = 2;
+    B.Matrix_proper[2][1] = 5;
 
 	C.Print();
 	B.Print();
