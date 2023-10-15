@@ -6,17 +6,25 @@
 #include <string>
 #include <stdexcept>
 
+//No split between source and header files :(((
+//Check differnces berween c and cpp
+
 //typedef struct MNIST_READER_TYPE {};
-enum MNIST_READER_TYPE {};
+enum MNIST_READER_TYPE {
+    Training = 0,
+    Test
+};
 
-int Training_size;
-int Test_size;
-int Pixels_for_image;
+const int Training_size = 60000;
+const int Test_size = 10000;
+const int Pixels_for_image = 768;
 
-std::string Training_data_location;
-std::string Training_label_location;
-std::string Test_data_location;
-std::string Test_label_location;
+//Program exepcts input files to be unzipped and in specific location
+
+const std::string Training_data_location = "../data/train-images.idx3-ubyte";
+const std::string Training_label_location = "../data/train-labels.idx1-ubyte";
+const std::string Test_data_location = "../data/t10k-images.idx3-ubyte";
+const std::string Test_label_location = "../data/t10k-labels.idx1-ubyte";
 
 class MNIST_READER{
     public:
