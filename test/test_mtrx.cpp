@@ -4,7 +4,7 @@
 
 #include "mtrx.h"
 //- this include makes issues, it is linking issue
-#include "../src/mtrx.cpp"
+//#include "../src/mtrx.cpp"
 
 TEST(TEST_MTRX,MTRX_Fill){
 
@@ -16,8 +16,6 @@ TEST(TEST_MTRX,MTRX_Fill){
 
     EXPECT_TRUE(Compare(A,B));
 }
-
-/*
 
 TEST(TEST_MTRX,MTRX_Get_size){
 
@@ -96,4 +94,3 @@ TEST(TEST_MTRX,MTRX_Dot_product){
     EXPECT_TRUE(Compare(C,D));
 
 }
-*/

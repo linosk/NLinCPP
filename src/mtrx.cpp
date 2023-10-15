@@ -1,10 +1,5 @@
 #include "mtrx.h"
 
-typedef struct Dimensions{
-    int Number_rows;
-    int Number_columns;
-} Dimensions;
-
 MTRX::MTRX(int M, int N) : Rows(M), Columns(N){
     Matrix_proper.resize(Rows,Vector(Columns));
 }

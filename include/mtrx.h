@@ -5,7 +5,11 @@
 #include <iostream>
 #include <stdexcept>
 
-typedef struct Dimensions Dimensions; 
+//Not sure if i like this (no split between .h and .cpp file)
+typedef struct Dimensions{
+    int Number_rows;
+    int Number_columns;
+} Dimensions;
 
 typedef std::vector<float> Vector;
 
