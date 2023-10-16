@@ -19,6 +19,7 @@ void MNIST_READER::Set_type(MNIST_READER_TYPE Type){
             Data_set_type = Type;
             Number_of_images = Training_size;
             Label.resize(Training_size,0);
+            Matrix.Resize(Training_size,Number_of_images);
 
             break;
         }
@@ -27,6 +28,7 @@ void MNIST_READER::Set_type(MNIST_READER_TYPE Type){
             Data_set_type = Type;
             Number_of_images = Test_size;
             Label.resize(Test_size,0);
+            Matrix.Resize(Test_size,Number_of_images);
 
             break;
         }
