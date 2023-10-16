@@ -4,6 +4,9 @@
 #include <vector>
 #include <iostream>
 #include <stdexcept>
+#include <string>
+#include <filesystem>
+#include <fstream>
 
 //Not sure if i like this (no split between .h and .cpp file)
 typedef struct Dimensions{
@@ -35,6 +38,8 @@ class MTRX{
             Dimensions Get_size();
 
             void Resize(int New_rows, int New_columns);
+
+            int Read_from_file(std::string Path);
 
 };
 

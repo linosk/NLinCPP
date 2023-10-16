@@ -41,6 +41,14 @@ void MTRX::Resize(int New_rows, int New_columns){
     Columns=New_columns;
 }
 
+int MTRX::Read_from_file(std::string Path){
+
+    if(std::filesystem::exists(Path)){
+        std::ifstream File(Path);
+        
+    }
+
+}
 
 bool Compare(MTRX A, MTRX B){
     if((A.Rows != B.Rows) || (A.Columns != B.Columns)){
