@@ -72,12 +72,11 @@ int main(int argc, char** argv){
 	std::cout<<C.Columns;
 	*/
 
-	MNIST_READER Training_set((MNIST_READER_TYPE)2);
+	MNIST_READER Training_set(Training);
 	std::cout<<Training_set.Number_of_images<<std::endl;
 
-	MNIST_READER Test_set(Test);
-	std::cout<<Test_set.Number_of_images<<std::endl;
-
+	//MNIST_READER Test_set(Test);
+	//std::cout<<Test_set.Number_of_images<<std::endl;
 
 	return 0;
 }

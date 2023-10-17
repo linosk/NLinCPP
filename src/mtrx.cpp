@@ -43,11 +43,21 @@ void MTRX::Resize(int New_rows, int New_columns){
 
 int MTRX::Read_from_file(std::string Path){
 
+    uint8_t Data_offset = 4*sizeof(uint8_t);
+
     if(std::filesystem::exists(Path)){
         std::ifstream File(Path);
-        
+        //This has to be checked
+        File.seekg(Data_offset);
+        int Size = File.tellg();
+        std::cout<<Size<<std::endl;
+        File.seekg(std::ios::end);
+        Size = File.tellg();
+        std::cout<<Size<<std::endl;
+        File.close();
+        return 0;
     }
-
+    return -1;
 }
 
 bool Compare(MTRX A, MTRX B){

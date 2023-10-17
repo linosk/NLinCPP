@@ -31,12 +31,12 @@ TEST(TEST_MTRX,MTRX_Resize){
 
     MTRX A(1,2);
 
-    A.Resize(3,4);
+    A.Resize(60000,768);
 
     Dimensions Dimensions = A.Get_size();
 
-    EXPECT_EQ(3,Dimensions.Number_rows);
-    EXPECT_EQ(4,Dimensions.Number_columns);
+    EXPECT_EQ(60000,Dimensions.Number_rows);
+    EXPECT_EQ(768,Dimensions.Number_columns);
 }
 
 TEST(TEST_MTRX,MTRX_Transpose){
