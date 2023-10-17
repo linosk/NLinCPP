@@ -21,10 +21,12 @@ const int Pixels_for_image = 768;
 
 //Program exepcts input files to be unzipped and in specific location
 
-const std::string Training_data_location = "../data/train-images.idx3-ubyte";
-const std::string Training_label_location = "../data/train-labels.idx1-ubyte";
-const std::string Test_data_location = "../data/t10k-images.idx3-ubyte";
-const std::string Test_label_location = "../data/t10k-labels.idx1-ubyte";
+//const std::string Training_data_location = "../data/train-images.idx3-ubyte";
+//make this path relative
+const std::string Training_data_location = "./home/me/Projects/NNinCPP/data/train-images.idx3-ubyte";
+const std::string Training_label_location = "./home/me/Projects/NNinCPP/data/train-labels.idx1-ubyte";
+const std::string Test_data_location = "/home/me/Projects/NNinCPP/data/t10k-images.idx3-ubyte";
+const std::string Test_label_location = "/home/me/Projects/NNinCPP/data/t10k-labels.idx1-ubyte";
 
 class MNIST_READER{
     public:
