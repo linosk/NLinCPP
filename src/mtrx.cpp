@@ -50,6 +50,7 @@ int MTRX::Read_from_file(std::string Path){
         File.seekg(Data_offset,std::ios::beg);
         int Size = File.tellg();
         std::cout<<Size<<std::endl;
+        
         File.seekg(-Data_offset,std::ios::end);
         Size = File.tellg();
         std::cout<<Size<<std::endl;
