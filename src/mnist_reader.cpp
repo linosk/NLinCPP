@@ -20,7 +20,7 @@ void MNIST_READER::Set_type(MNIST_READER_TYPE Type){
             Number_of_images = Training_size;
             Label.resize(Number_of_images,0);
             Matrix.Resize(Number_of_images,Pixels_for_image);
-            if(!Matrix.Read_from_file(Training_data_location)){
+            if(Matrix.Read_from_file(Training_data_location)){
                 throw std::invalid_argument("Value not read correctly.");
             }
 
