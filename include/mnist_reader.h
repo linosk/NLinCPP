@@ -23,8 +23,8 @@ const int Pixels_for_image = 768;
 
 //const std::string Training_data_location = "../data/train-images.idx3-ubyte";
 //make this path relative
-const std::string Training_data_location = "./home/me/Projects/NNinCPP/data/train-images.idx3-ubyte";
-const std::string Training_label_location = "./home/me/Projects/NNinCPP/data/train-labels.idx1-ubyte";
+const std::string Training_data_location = "/home/me/Projects/NNinCPP/data/train-images.idx3-ubyte";
+const std::string Training_label_location = "/home/me/Projects/NNinCPP/data/train-labels.idx1-ubyte";
 const std::string Test_data_location = "/home/me/Projects/NNinCPP/data/t10k-images.idx3-ubyte";
 const std::string Test_label_location = "/home/me/Projects/NNinCPP/data/t10k-labels.idx1-ubyte";
 
