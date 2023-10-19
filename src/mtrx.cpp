@@ -47,14 +47,12 @@ int MTRX::Read_from_file(std::string Path){
 
     if(std::filesystem::exists(Path)){
         std::ifstream File(Path);
-        //This has to be checked
-        File.seekg(Data_offset);
+        File.seekg(Data_offset,std::ios::beg);
         int Size = File.tellg();
         std::cout<<Size<<std::endl;
-        File.seekg(std::ios::end);
+        File.seekg(-Data_offset,std::ios::end);
         Size = File.tellg();
         std::cout<<Size<<std::endl;
-        File.close();
         return 0;
     }
     return -1;
