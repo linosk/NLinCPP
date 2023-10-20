@@ -44,13 +44,30 @@ void MTRX::Resize(int New_rows, int New_columns){
 int MTRX::Read_from_file(std::string Path){
 
     uint8_t Data_offset = 4*sizeof(uint8_t);
+    //Vector tmp(0,Data_offset);
+    char tmp[Data_offset];
 
     if(std::filesystem::exists(Path)){
         std::ifstream File(Path);
         File.seekg(Data_offset,std::ios::beg);
         int Size = File.tellg();
         std::cout<<Size<<std::endl;
-        
+
+        for(int i =0;i<Data_offset;i++){
+            File.read(&tmp[i],i);
+        }
+
+        //std::hex changes all printed values to hex
+        for(int i=0;i<Data_offset;i++){
+            //std::cout<<std::hex<<tmp[i]<<std::endl;
+            std::cout<<tmp[i]<<std::endl;
+            //printf("%x",tmp[i]);
+        }
+
+        std::ofstream f("ne.txt",std::ios::out | std::ios::binary); 
+
+        f.write(tmp,Data_offset);       
+
         File.seekg(-Data_offset,std::ios::end);
         Size = File.tellg();
         std::cout<<Size<<std::endl;
