@@ -45,7 +45,8 @@ int MTRX::Read_from_file(std::string Path){
 
     uint8_t Data_offset = 4*sizeof(uint8_t);
     //Vector tmp(0,Data_offset);
-    char tmp[Data_offset];
+    char tmp[4*Data_offset];
+    double tmp2[4*Data_offset];
 
     if(std::filesystem::exists(Path)){
         std::ifstream File(Path);
@@ -53,20 +54,26 @@ int MTRX::Read_from_file(std::string Path){
         int Size = File.tellg();
         std::cout<<Size<<std::endl;
 
-        for(int i =0;i<Data_offset;i++){
+        for(int i =0;i<4*Data_offset;i++){
             File.read(&tmp[i],i);
+        }
+
+        for(int i=0;i<4*Data_offset;i++){
+            tmp2[i] = (double)tmp[i]/255.0;
         }
 
         //std::hex changes all printed values to hex
         for(int i=0;i<Data_offset;i++){
             //std::cout<<std::hex<<tmp[i]<<std::endl;
-            std::cout<<tmp[i]<<std::endl;
+            std::cout<<tmp2[i]<<std::endl;
             //printf("%x",tmp[i]);
         }
 
         std::ofstream f("ne.txt",std::ios::out | std::ios::binary); 
 
-        f.write(tmp,Data_offset);       
+        for(int i=0;i<Data_offset;i++){
+            f.put(tmp[2]);       
+        }
 
         File.seekg(-Data_offset,std::ios::end);
         Size = File.tellg();
