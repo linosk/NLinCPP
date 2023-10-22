@@ -1,7 +1,7 @@
 #include "mtrx.h"
 
 MTRX::MTRX(int M, int N) : Rows(M), Columns(N){
-    Matrix_proper.resize(Rows,Vector(Columns));
+    Matrix_proper.resize(Rows,Vector_double(Columns));
 }
 
 void MTRX::Print(){
@@ -41,43 +41,65 @@ void MTRX::Resize(int New_rows, int New_columns){
     Columns=New_columns;
 }
 
+int MTRX::From_char_to_double(std::ifstream &File){
+
+    //Length should be defined globally as in 'Pixels_for_image' in mnish_reader.h
+    Vector_char Placeholder(Columns);
+    Vector_double PH(Columns);
+
+    for(int i;i<Columns;i++){
+        File.read(&Placeholder[i],sizeof(char));
+        PH[i] = ((double)Placeholder[i])/255.0;
+    }
+
+    for(int i;i<Columns;i++){
+        //if(PH[i]>0.0)
+            std::cout<<PH[i]<<std::endl;
+    }
+
+    return 0;
+}
+
 int MTRX::Read_from_file(std::string Path){
 
     uint8_t Data_offset = 4*sizeof(uint8_t);
     //Vector tmp(0,Data_offset);
-    char tmp[4*Data_offset];
-    double tmp2[4*Data_offset];
+    //char tmp[4*Data_offset];
+    //double tmp2[4*Data_offset];
 
     if(std::filesystem::exists(Path)){
         std::ifstream File(Path);
-        File.seekg(Data_offset,std::ios::beg);
-        int Size = File.tellg();
-        std::cout<<Size<<std::endl;
+        //File.seekg(Data_offset,std::ios::beg);
+        //int Size = File.tellg();
+        //std::cout<<Size<<std::endl;
 
-        for(int i =0;i<4*Data_offset;i++){
-            File.read(&tmp[i],i);
-        }
+        std::cout<<(std::streampos)File.tellg()<<std::endl;
+        File.seekg(Data_offset,std::ios::cur);
+        std::cout<<(std::streampos)File.tellg()<<std::endl;
+        From_char_to_double(File);
 
-        for(int i=0;i<4*Data_offset;i++){
-            tmp2[i] = (double)tmp[i]/255.0;
-        }
+        //for(int i =0;i<4*Data_offset;i++){
+        //    File.read(&tmp[i],i);
+        //}
 
-        //std::hex changes all printed values to hex
-        for(int i=0;i<Data_offset;i++){
-            //std::cout<<std::hex<<tmp[i]<<std::endl;
-            std::cout<<tmp2[i]<<std::endl;
-            //printf("%x",tmp[i]);
-        }
+        //for(int i=0;i<4*Data_offset;i++){
+        //    tmp2[i] = (double)tmp[i]/255.0;
+        //}
 
-        std::ofstream f("ne.txt",std::ios::out | std::ios::binary); 
+        ////std::hex changes all printed values to hex
+        //for(int i=0;i<Data_offset;i++){
+        //    //std::cout<<std::hex<<tmp[i]<<std::endl;
+        //    std::cout<<tmp2[i]<<std::endl;
+        //    //printf("%x",tmp[i]);
+        //}
 
-        for(int i=0;i<Data_offset;i++){
-            f.put(tmp[2]);       
-        }
-
-        File.seekg(-Data_offset,std::ios::end);
-        Size = File.tellg();
-        std::cout<<Size<<std::endl;
+        //std::ofstream f("ne.txt",std::ios::out | std::ios::binary); 
+        //for(int i=0;i<Data_offset;i++){
+        //    f.put(tmp[2]);       
+        //}
+        //File.seekg(-Data_offset,std::ios::end);
+        //Size = File.tellg();
+        //std::cout<<Size<<std::endl;
         return 0;
     }
     return -1;
