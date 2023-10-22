@@ -14,10 +14,14 @@ typedef struct Dimensions{
     int Number_columns;
 } Dimensions;
 
-typedef std::vector<float> Vector;
+typedef std::vector<char> Vector_char;
+typedef std::vector<int> Vector_int;
+typedef std::vector<float> Vector_float;
+typedef std::vector<double> Vector_double;
 
-typedef std::vector<Vector> Matrix;
+typedef std::vector<Vector_double> Matrix;
 
+//A bit of a mess cause by default the matrix's value are double
 class MTRX{
     public:
             //Number of rows
@@ -40,6 +44,8 @@ class MTRX{
             void Resize(int New_rows, int New_columns);
 
             int Read_from_file(std::string Path);
+
+            int From_char_to_double(std::ifstream &File);
 
 };
 
