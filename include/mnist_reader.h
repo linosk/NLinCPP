@@ -17,7 +17,8 @@ enum MNIST_READER_TYPE {
 
 const int Training_size = 60000;
 const int Test_size = 10000;
-const int Pixels_for_image = 768;
+// 28 x 28
+const int Image_surface = 768;
 
 //Program exepcts input files to be unzipped and in specific location
 
@@ -32,12 +33,13 @@ class MNIST_READER{
     public:
 
         int Number_of_images;
+        int Pixels_per_image;
         MNIST_READER_TYPE Data_set_type;
 
         const int Height;
         const int Width;
 
-        Vector Label;
+        Vector_int Label;
 
         MTRX Matrix;
         MNIST_READER(MNIST_READER_TYPE Type);

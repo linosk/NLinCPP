@@ -18,8 +18,9 @@ void MNIST_READER::Set_type(MNIST_READER_TYPE Type){
 
             Data_set_type = Type;
             Number_of_images = Training_size;
+            Pixels_per_image = Image_surface;
             Label.resize(Number_of_images,0);
-            Matrix.Resize(Number_of_images,Pixels_for_image);
+            Matrix.Resize(Number_of_images,Pixels_per_image);
             if(Matrix.Read_from_file(Training_data_location)){
                 throw std::invalid_argument("Value not read correctly.");
             }
