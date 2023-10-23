@@ -44,18 +44,23 @@ void MTRX::Resize(int New_rows, int New_columns){
 int MTRX::From_char_to_double(std::ifstream &File){
 
     //Length should be defined globally as in 'Pixels_for_image' in mnish_reader.h
-    Vector_char Placeholder(Columns);
-    Vector_double PH(Columns);
+    Vector_char Placeholder;
+    Placeholder.resize(Columns);
+    Vector_double PH;
+    PH.resize(Columns);
+    //std::vector<char> Placeholder;
+    //Placeholder.resize(Columns);
 
-    for(int i;i<Columns;i++){
+    for(int i = 0;i<Columns;i++){
         File.read(&Placeholder[i],sizeof(char));
         PH[i] = ((double)Placeholder[i])/255.0;
+        //if(PH[i]>0){
+        //    std::cout<<"["<<i<<"] "<<PH[i]<<std::endl;
+        //}
+        std::cout<<"["<<std::dec<<i<<"]"<<std::hex<<static_cast<int>(Placeholder[i])<<std::endl;
     }
 
-    for(int i;i<Columns;i++){
-        //if(PH[i]>0.0)
-            std::cout<<PH[i]<<std::endl;
-    }
+    //std::cout<<PH[0]<<std::endl;
 
     return 0;
 }
