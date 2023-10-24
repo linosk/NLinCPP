@@ -14,7 +14,7 @@ typedef struct Dimensions{
     int Number_columns;
 } Dimensions;
 
-typedef std::vector<char> Vector_char;
+typedef std::vector<unsigned char> Vector_char;
 typedef std::vector<int> Vector_int;
 typedef std::vector<float> Vector_float;
 typedef std::vector<double> Vector_double;
