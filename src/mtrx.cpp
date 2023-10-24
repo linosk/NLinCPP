@@ -50,14 +50,21 @@ int MTRX::From_char_to_double(std::ifstream &File){
     PH.resize(Columns);
     //std::vector<char> Placeholder;
     //Placeholder.resize(Columns);
+    char Buffer;
 
     for(int i = 0;i<Columns;i++){
-        File.read(&Placeholder[i],sizeof(char));
+    //for(int i = 0;i<10;i++){
+        File.read(&Buffer,sizeof(char));
+        Placeholder[i] = (unsigned char)Buffer;
         PH[i] = ((double)Placeholder[i])/255.0;
         //if(PH[i]>0){
         //    std::cout<<"["<<i<<"] "<<PH[i]<<std::endl;
         //}
-        std::cout<<"["<<std::dec<<i<<"]"<<std::hex<<static_cast<int>(Placeholder[i])<<std::endl;
+
+        //std::cout<<"["<<std::dec<<i<<"]"<<std::hex<<static_cast<int>(Placeholder[i])<<std::endl;
+
+        if(PH[i]!=0.0)
+            std::cout<<"["<<std::dec<<i<<"]"<<std::dec<<static_cast<double>(PH[i])<<std::endl;
     }
 
     //std::cout<<PH[0]<<std::endl;
@@ -66,21 +73,21 @@ int MTRX::From_char_to_double(std::ifstream &File){
 }
 
 int MTRX::Read_from_file(std::string Path){
-
-    uint8_t Data_offset = 4*sizeof(uint8_t);
+    //?
+    uint8_t Data_offset = 16*sizeof(uint8_t);
     //Vector tmp(0,Data_offset);
     //char tmp[4*Data_offset];
     //double tmp2[4*Data_offset];
 
     if(std::filesystem::exists(Path)){
-        std::ifstream File(Path);
+        std::ifstream File(Path,std::ios::binary);
         //File.seekg(Data_offset,std::ios::beg);
         //int Size = File.tellg();
         //std::cout<<Size<<std::endl;
 
-        std::cout<<(std::streampos)File.tellg()<<std::endl;
+        //std::cout<<(std::streampos)File.tellg()<<std::endl;
         File.seekg(Data_offset,std::ios::cur);
-        std::cout<<(std::streampos)File.tellg()<<std::endl;
+        //std::cout<<(std::streampos)File.tellg()<<std::endl;
         From_char_to_double(File);
 
         //for(int i =0;i<4*Data_offset;i++){
