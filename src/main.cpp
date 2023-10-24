@@ -73,7 +73,7 @@ int main(int argc, char** argv){
 	*/
 
 	MNIST_READER Training_set(Training);
-	std::cout<<Training_set.Number_of_images<<std::endl;
+	//std::cout<<Training_set.Number_of_images<<std::endl;
 
 	//MNIST_READER Test_set(Test);
 	//std::cout<<Test_set.Number_of_images<<std::endl;
