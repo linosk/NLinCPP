@@ -67,6 +67,24 @@ int MTRX::From_char_to_double(std::ifstream &File){
             std::cout<<"["<<std::dec<<i<<"]"<<std::dec<<static_cast<double>(PH[i])<<std::endl;
     }
 
+    std::ofstream Out("o.pgm",std::ios::binary);
+
+    //if(Out.is_open()){
+        Out << "P5\n";
+        Out << 28;
+        Out << " ";
+        Out << 28;
+        Out << "\n";
+        Out << 255;
+        Out << "\n";
+        for(int i=0;i<768;i=i+28){
+            for(int j=0;j<28;j++){
+                Out << Placeholder[i+j];
+            }
+        }
+    //}
+    Out.close();
+
     //std::cout<<PH[0]<<std::endl;
 
     return 0;
@@ -112,6 +130,8 @@ int MTRX::Read_from_file(std::string Path){
         //File.seekg(-Data_offset,std::ios::end);
         //Size = File.tellg();
         //std::cout<<Size<<std::endl;
+
+        File.close();
         return 0;
     }
     return -1;
