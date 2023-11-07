@@ -14,12 +14,13 @@ typedef struct Dimensions{
     int Number_columns;
 } Dimensions;
 
-typedef std::vector<unsigned char> Vector_char;
+typedef std::vector<unsigned char> Vector_uchar;
 typedef std::vector<int> Vector_int;
 typedef std::vector<float> Vector_float;
 typedef std::vector<double> Vector_double;
 
-typedef std::vector<Vector_double> Matrix;
+typedef std::vector<Vector_double> Matrix_double;
+typedef std::vector<Vector_uchar> Matrix_uchar;
 
 //A bit of a mess cause by default the matrix's value are double
 class MTRX{
@@ -29,7 +30,8 @@ class MTRX{
             // Number of columns
 		    int Columns;
             //Actual matrix
-		    Matrix Matrix_proper;
+		    Matrix_double Matrix_proper;
+            Matrix_uchar Matrix_place_holder;
 
 		    MTRX(int M, int N);
 

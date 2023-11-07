@@ -2,6 +2,7 @@
 
 MTRX::MTRX(int M, int N) : Rows(M), Columns(N){
     Matrix_proper.resize(Rows,Vector_double(Columns));
+    Matrix_place_holder.resize(Rows,Vector_uchar(Columns));
 }
 
 void MTRX::Print(){
@@ -44,7 +45,7 @@ void MTRX::Resize(int New_rows, int New_columns){
 int MTRX::From_char_to_double(std::ifstream &File){
 
     //Length should be defined globally as in 'Pixels_for_image' in mnish_reader.h
-    Vector_char Placeholder;
+    Vector_uchar Placeholder;
     Placeholder.resize(Columns);
     Vector_double PH;
     PH.resize(Columns);
@@ -52,21 +53,33 @@ int MTRX::From_char_to_double(std::ifstream &File){
     //Placeholder.resize(Columns);
     char Buffer;
 
-    for(int i = 0;i<Columns;i++){
+    //Matrix_proper
+
+    //for(int i = 0;i<Rows;i++){
+    for(int i = 0;i<1;i++){
+        for(int j=0;j<Columns;j++){
+            File.read(&Buffer,sizeof(char));
+            Matrix_place_holder[i][j] = (unsigned char)Buffer;
+            std::cout<<i<<std::endl;
+            std::cout<<j<<std::endl;
+            Matrix_proper[i][j] = ((double)Matrix_place_holder[i][j]);
+        }
+
     //for(int i = 0;i<10;i++){
-        File.read(&Buffer,sizeof(char));
-        Placeholder[i] = (unsigned char)Buffer;
-        PH[i] = ((double)Placeholder[i])/255.0;
+        //File.read(&Buffer,sizeof(char));
+        //Placeholder[i] = (unsigned char)Buffer;
+        //PH[i] = ((double)Placeholder[i])/255.0;
         //if(PH[i]>0){
         //    std::cout<<"["<<i<<"] "<<PH[i]<<std::endl;
         //}
 
         //std::cout<<"["<<std::dec<<i<<"]"<<std::hex<<static_cast<int>(Placeholder[i])<<std::endl;
 
-        if(PH[i]!=0.0)
-            std::cout<<"["<<std::dec<<i<<"]"<<std::dec<<static_cast<double>(PH[i])<<std::endl;
+        //if(PH[i]!=0.0)
+    //    std::cout<<"["<<std::dec<<i<<"]"<<std::dec<<static_cast<double>(PH[i])<<std::endl;
     }
 
+    /*
     std::ofstream Out("o.pgm",std::ios::binary);
 
     //if(Out.is_open()){
@@ -79,11 +92,13 @@ int MTRX::From_char_to_double(std::ifstream &File){
         Out << "\n";
         for(int i=0;i<768;i=i+28){
             for(int j=0;j<28;j++){
-                Out << Placeholder[i+j];
+                //Out << Placeholder[i+j];
+                Out<<Matrix_place_holder[i][j];
             }
         }
     //}
     Out.close();
+    */
 
     //std::cout<<PH[0]<<std::endl;
 
