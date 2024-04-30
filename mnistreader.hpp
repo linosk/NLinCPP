@@ -1,6 +1,6 @@
-#ifndef _MNISTREADER_H_
-#define _MNISTREADER_H_
+#ifndef _MNISTREADER_HPP_
+#define _MNISTREADER_HPP_
 
 void sth();
 
-#endif//_MNISTREADER_H_
+#endif//_MNISTREADER_HPP_

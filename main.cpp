@@ -1,10 +1,8 @@
-#include "mnistreader.hpp"
+#include "mtrx.hpp"
 
 int main(void){
 
-    sth();
-
-    int x = 0;
+    matrix tmp;
 
     return 0;
 }
