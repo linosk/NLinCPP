@@ -4,9 +4,20 @@
 #include <string>
 #include <filesystem>
 #include <fstream>
-#include <cstdarg>
 
 class Logger{
+
+private:
+        inline static const std::string logNameDir = ".logs";
+
+        enum logType{
+                INFO = 0,
+                ERROR,
+                DEBUG
+        };
+
+        void log(logType type, std::string text); // maybe add function logN(not this name) that would add "\n"
+        void log(logType type, std::string text, int value);
 
 public:
         std::string logNameFile;
@@ -15,10 +26,9 @@ public:
 
         Logger(std::string logNameFile);
 
-        void logInfo(std::string log);
-
-private:
-        inline static const std::string logNameDir = ".logs";
+        //later make it a template or sth
+        void logInfo(std::string information);
+        void logInfo(std::string information, int value);
 
 };
 
