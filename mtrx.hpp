@@ -3,19 +3,25 @@
 
 #include <vector>
 
-typedef std::vector<int> Vector;
-typedef std::vector<Vector> Matrix;
+#include "logger.hpp"
 
 class MTRX{
 
-public:
+private:
+    typedef std::vector<int> Vector;
+    typedef std::vector<Vector> Matrix;
+
     int rows;
     int columns;
-
     Matrix matrix{};
+
+    Logger logger;
+
+public:
     
     MTRX(int m, int n);
 
+    void fillMatrix(int val);
     void printMatrix(void);
 };
 
