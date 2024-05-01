@@ -1,0 +1,8 @@
+Structure project:
+    - seperate both logger and matrix library
+    - write tests
+    - wrtie cmake
+    - logging time to each log
+    - make logs more cpp style
+    - add namespaces
+    - differentiate between logs more explicitly
