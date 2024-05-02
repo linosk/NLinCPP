@@ -23,6 +23,14 @@ void Logger::disableDebug(void){
     isDebugEnabled = false;
 }
 
+void Logger::enableTimeLogging(void){
+    isTimeLogged = true;
+}
+
+void Logger::disableTimeLogging(void){
+    isTimeLogged = false;
+}
+
 void Logger::logDebug(std::string information){
     if(isDebugEnabled)
         log(DEBUG, information);
@@ -37,7 +45,7 @@ void Logger::log(logType type, std::string text){
 
     switch(type){
         case INFO:
-            logFile<<"[INFO]:";
+            logFile<<"[INFO ]:";
             break;
         case ERROR:
             logFile<<"[ERROR]:";
@@ -49,12 +57,10 @@ void Logger::log(logType type, std::string text){
             break;
     }
 
-    std::string val = getTimeAndDate();
-    logFile<<val;
-    logFile<<val.substr(4,3);
-    logFile<<val.substr(8,2);
-    logFile<<val.substr(11,8);
-    logFile<<val.substr(20,4);
+    if(isTimeLogged){
+        std::string time = getTimeFormatted();
+        logFile<<time;
+    }
 
     logFile<<" ";
     logFile<<text;
@@ -77,7 +83,7 @@ void Logger::log(logType type, std::string text, int value){
 
     switch(type){
         case INFO:
-            logFile<<"[INFO]:";
+            logFile<<"[INFO ]:";
             break;
         case ERROR:
             logFile<<"[ERROR]:";
@@ -89,8 +95,10 @@ void Logger::log(logType type, std::string text, int value){
             break;
     }
 
-    std::string val = getTimeAndDate();
-    logFile<<val.substr(4,3);
+    if(isTimeLogged){
+        std::string time = getTimeFormatted();
+        logFile<<time;
+    }
 
     logFile<<" ";
     logFile<<text;
@@ -101,33 +109,32 @@ void Logger::log(logType type, std::string text, int value){
     logFile.close();
 }
 
-std::string Logger::getTimeAndDate(void){
+std::string Logger::getTime(void){
     time_t now = time(0);
     std::string nowString = ctime(&now);
     return nowString;
 }
 
-std::string Logger::getDayFromatted(std::string day){
-    if(std::isspace(day[0]))
-        return "0"+day[1];
+std::string Logger::getDayFormatted(std::string day){
+    if(day[0]==' ')
+        day[0] = '0';
     return day;
 }
 
 std::string Logger::getMonthFormatted(std::string month){
-
-
+    std::string monthNumber = months.at(month);
+    if(monthNumber.length()>1)
+        return monthNumber;
+    return "0"+monthNumber;
 }
 
-std::string Logger::getTimeAndDateFormatted(void){
-    std::string nowString = getTimeAndDate();
-    // logFile<<val;
-    // logFile<<val.substr(4,3);
-    // logFile<<val.substr(8,2);
-    // logFile<<val.substr(11,8);
-    // logFile<<val.substr(20,4);
+std::string Logger::getTimeFormatted(void){
+    std::string nowString = getTime();
     std::string nowStringFormatted;
-    //nowStringFormatted = nowStringFormatted + nowString.substr(11,8);
     std::string time = nowString.substr(11,8);
-    std::string day = getDayFromatted(nowString.substr(8,2));
+    std::string day = getDayFormatted(nowString.substr(8,2));
     std::string month = getMonthFormatted(nowString.substr(4,3));
+    std::string year = nowString.substr(20,4);
+    nowStringFormatted = "["+day+"."+month+"."+year+" "+time+"]:";
+    return nowStringFormatted;
 }

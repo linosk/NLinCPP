@@ -2,7 +2,8 @@
 
 //Define matrix m x n
 MTRX::MTRX(int m, int n) : rows(m), columns(n), logger("mtrx.log"){
-    //logger.enableDebug(); //does not has to be enabled from this level
+    logger.enableDebug(); //does not has to be enabled from this level
+    logger.enableTimeLogging();
     matrix.resize(rows,Vector(columns));
     this->dimensions.rows = this->rows;
     this->dimensions.columns = this->columns;
