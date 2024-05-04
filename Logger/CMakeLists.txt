@@ -8,7 +8,7 @@ find_package(GTest REQUIRED)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(LOGGER src/loggertime.cpp test/test_loggertime.cpp)
+add_executable(LOGGER src/loggertime.cpp test/test_loggertime.cpp src/logger.cpp test/test_logger.cpp)
 #add_executable(LOGGER test/test_logger.cpp)
 
 target_include_directories(LOGGER PUBLIC include)

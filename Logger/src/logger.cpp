@@ -1,7 +1,7 @@
 #include "logger.hpp" //restructure this
 
 Logger::Logger(std::string logNameFile){
-
+    //maybe add try and catch?
     if(!std::filesystem::exists(logNameDir)){
         std::filesystem::create_directories(logNameDir);
     }
@@ -31,6 +31,7 @@ void Logger::disableTimeLogging(void){
     isTimeLogged = false;
 }
 
+/*
 void Logger::logDebug(std::string information){
     if(isDebugEnabled)
         log(DEBUG, information);
@@ -114,10 +115,44 @@ void Logger::log(logType type, std::string text, int value){
 
     logFile.close();
 }
+*/
 
-template<typename... Args>
-void Logger::logTmp(logType type, Args... args){
+void Logger::log(const logType type, const std::initializer_list<std::string>& args){
 
-    
+    std::ofstream logFile(this->logNameFilePath, std::ios::app);
 
+    switch(type){
+        case INFO:
+            logFile<<"[ INFO    ]:";
+            break;
+        case WARNING:
+            logFile<<"[ WARNING ]:";
+            break;
+        case ERROR:
+            logFile<<"[ ERROR   ]:";
+            break;
+        case DEBUG:
+            logFile<<"[ DEBUG   ]:";
+            break;
+        default:
+            break;
+    }
+
+    if(isTimeLogged){
+        std::string time = loggertime.getTimeFormatted();
+        logFile<<time;
+    }
+
+    for(const auto& arg : args){
+        logFile<<" ";
+        logFile<<arg;
+    }
+    logFile<<"\n";
+    logFile.close();
+
+    logFile.close();
+}
+
+void Logger::logInfo(const std::initializer_list<std::string>& args){
+    log(INFO,args);
 }
