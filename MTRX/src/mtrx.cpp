@@ -1,5 +1,18 @@
 #include "mtrx.hpp"
 
+MTRX::MTRX(int m, int n, std::string id) : rows(m), columns(n), name(id), logger("mtrx.log") {
+    logger.enableDebug();
+    logger.enableTimeLogging();
+    matrix.resize(rows,Vector(columns));
+    this->dimensions.rows = this->rows;
+    this->dimensions.columns = this->columns;
+    logger.logInfo({"Matrix",this->name,"created succesfully"});
+    logger.logDebug({"#",this->name,"#"});
+    logger.logDebug({"Number of rows:",std::to_string(this->dimensions.rows)});
+    logger.logDebug({"Number of columns:",std::to_string(this->dimensions.columns)});
+}
+
+/*
 //Define matrix m x n
 MTRX::MTRX(int m, int n) : rows(m), columns(n), logger("mtrx.log"){
     logger.enableDebug(); //does not has to be enabled from this level
@@ -60,5 +73,5 @@ bool MTRX::canBeDotted(MTRX::Dimensions dimensionsFirst, MTRX::Dimensions dimens
     }
     return true;
 }
-
+*/
 //ALGORITHM FOR MATRIX PRODUCT
