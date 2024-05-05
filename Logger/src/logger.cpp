@@ -31,92 +31,6 @@ void Logger::disableTimeLogging(void){
     isTimeLogged = false;
 }
 
-/*
-void Logger::logDebug(std::string information){
-    if(isDebugEnabled)
-        log(DEBUG, information);
-}
-
-void Logger::logInfo(std::string information){
-    log(INFO, information);
-}
-
-void Logger::log(logType type, std::string text){
-    std::ofstream logFile(this->logNameFilePath, std::ios::app);
-
-    switch(type){
-        case INFO:
-            logFile<<"[ INFO    ]:";
-            break;
-        case WARNING:
-            logFile<<"[ WARNING ]:";
-            break;
-        case ERROR:
-            logFile<<"[ ERROR   ]:";
-            break;
-        case DEBUG:
-            logFile<<"[ DEBUG   ]:";
-            break;
-        default:
-            break;
-    }
-
-    if(isTimeLogged){
-        std::string time = loggertime.getTimeFormatted();
-        logFile<<time;
-    }
-
-    logFile<<" ";
-    logFile<<text;
-    logFile<<"\n";
-
-    logFile.close();
-}
-
-void Logger::logDebug(std::string information, int value){
-    if(isDebugEnabled)
-        log(DEBUG, information, value);
-}
-
-void Logger::logInfo(std::string information, int value){
-    log(INFO, information, value);
-}
-
-void Logger::log(logType type, std::string text, int value){
-    std::ofstream logFile(this->logNameFilePath, std::ios::app);
-
-    switch(type){
-        case INFO:
-            logFile<<"[ INFO    ]:";
-            break;
-        case WARNING:
-            logFile<<"[ WARNING ]:";
-            break;
-        case ERROR:
-            logFile<<"[ ERROR   ]:";
-            break;
-        case DEBUG:
-            logFile<<"[ DEBUG   ]:";
-            break;
-        default:
-            break;
-    }
-
-    if(isTimeLogged){
-        std::string time = loggertime.getTimeFormatted();
-        logFile<<time;
-    }
-
-    logFile<<" ";
-    logFile<<text;
-    logFile<<" ";
-    logFile<<value;
-    logFile<<"\n";
-
-    logFile.close();
-}
-*/
-
 void Logger::log(const logType type, const std::initializer_list<std::string>& args){
 
     std::ofstream logFile(this->logNameFilePath, std::ios::app);
@@ -155,4 +69,18 @@ void Logger::log(const logType type, const std::initializer_list<std::string>& a
 
 void Logger::logInfo(const std::initializer_list<std::string>& args){
     log(INFO,args);
+}
+
+void Logger::logWarning(const std::initializer_list<std::string>& args){
+    log(WARNING,args);
+}
+
+void Logger::logError(const std::initializer_list<std::string>& args){
+    log(ERROR,args);
+}
+
+void Logger::logDebug(const std::initializer_list<std::string>& args){
+    if(isDebugEnabled){
+        log(DEBUG,args);
+    }
 }

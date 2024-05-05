@@ -25,12 +25,6 @@ private:
 
         LoggerTime loggertime;
 
-        //void log(logType type, std::string text); // maybe add function logN(not this name) that would add "\n"
-        //void log(logType type, std::string text, int value);
-
-        // template<typename... Args>
-        // void logTmp(logType type, Args... args);
-
         void log(const logType type, const std::initializer_list<std::string>& args);
 
 public:
@@ -46,39 +40,10 @@ public:
         void enableTimeLogging(void);
         void disableTimeLogging(void);
 
-        //later make it a template or sth
-        //void logInfo(std::string information);
-        //void logInfo(std::string information, int value);
-
-        //void logDebug(std::string information);
-        //void logDebug(std::string information, int value);
-
-        // template<typename... Args>
-        // void logInfoTmp(Args&&... args);
-
-        // template<typename T>
-        // int countArgs(T&&);
-
-        // template<typename T>
-        // int countArgs(T&&){
-                // return 1;
-        // }
-
-        // template<typename... Args>
-        // int sa(Args... args){
-                // return 1 + countArgs(std::forward<Args>(args)...);
-        // }
-        // template<typename... Args>
-        // int sa(const Args&... args){
-                // constexpr auto size = sizeof...(Args);
-                // return size;
-        // }
-
-        // int w(const std::string&... args){
-                // 
-        // }
-
         void logInfo(const std::initializer_list<std::string>& args);
+        void logWarning(const std::initializer_list<std::string>& args);
+        void logError(const std::initializer_list<std::string>& args);
+        void logDebug(const std::initializer_list<std::string>& args);
 
 };
 
