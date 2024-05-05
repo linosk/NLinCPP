@@ -22,8 +22,10 @@
 		"args": [
 		  "-g",
 		  "-o", "${workspaceFolder}/bin/NNinCPP",
-		  "-I${workspaceFolder}/include",
-		  "${workspaceFolder}/src/*.cpp"
+		  "-I${workspaceFolder}",
+		  "${workspaceFolder}/*.cpp"
+		//  "-I${workspaceFolder}/include",
+		//  "${workspaceFolder}/src/*.cpp"
 		],
 		"group": {
 		  "kind": "build",
@@ -37,4 +39,3 @@
 	  }
 	]
   }
-  

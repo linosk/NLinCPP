@@ -1,0 +1,8 @@
+Structure project:
+    - seperate both logger and matrix library
+    - write tests
+    - wrtie cmake
+    - logging time to each log
+    - add namespaces
+    - time operations could be extracted from logger
+    - TRY TO IMPLEMENT SMART POINTERS SOMEWHERE

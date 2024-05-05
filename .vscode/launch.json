@@ -5,8 +5,8 @@
         "name": "Debug NNinCPP",
         "type": "cppdbg",
         "request": "launch",
-        "program": "${workspaceFolder}/bin/NNinCPP",  // Path to the compiled binary
-        "args": [],                                   // Command-line arguments
+        "program": "${workspaceFolder}/bin/NNinCPP",
+        "args": [],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",
         "environment": [],
@@ -19,9 +19,8 @@
             "ignoreFailures": true
           }
         ],
-        "preLaunchTask": "build NNinCPP",             // Build task to run before debugging
-        "miDebuggerPath": "gdb"                       // Use 'gdb' from the system
+        "preLaunchTask": "build NNinCPP",
+        "miDebuggerPath": "gdb"
       }
     ]
   }
-  
