@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-TEST(TEST_LOGGERTIME,getTime){
+TEST(TEST_LoggerTime,getTime){
     LoggerTime loggertime;
 
     std::string time = loggertime.getTimeFormatted();
