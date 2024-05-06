@@ -19,16 +19,17 @@ private:
 
     int rows;
     int columns;
-    
 
-    Dimensions dimensions; 
+    Dimensions dimensions;
     Matrix matrix{};
+    std::string name;
 
     Logger logger;
 
 public:
-    std::string name; //LATER TO PRIVATE
     MTRX(int m, int n, std::string id = "");
+    void fillMatrix(int val);
+    Dimensions getDimensions(void);
 
 /*
 private:
