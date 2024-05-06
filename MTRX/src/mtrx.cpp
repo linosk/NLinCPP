@@ -12,6 +12,17 @@ MTRX::MTRX(int m, int n, std::string id) : rows(m), columns(n), name(id), logger
     logger.logDebug({"Number of columns:",std::to_string(this->dimensions.columns)});
 }
 
+void MTRX::fillMatrix(int val){
+    logger.logInfo({"Matrix",this->name,"filled with",std::to_string(val)});
+    logger.logDebug({"#",this->name,"#"});
+    for(int i=0;i<rows;i++){ // maybe auto loop?
+        for(int j=0;j<columns;j++){
+            matrix[i][j] = val;
+            logger.logDebug({"Value at [",std::to_string(i),"][",std::to_string(j),"]:",std::to_string(matrix[i][j])});
+        }
+    }
+}
+
 /*
 //Define matrix m x n
 MTRX::MTRX(int m, int n) : rows(m), columns(n), logger("mtrx.log"){
