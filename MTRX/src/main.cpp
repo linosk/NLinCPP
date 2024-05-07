@@ -3,11 +3,14 @@
 #include <iostream>
 int main(void){
 
-    MTRX mtrx(2,3,"mtrx");
-    mtrx.fillMatrix(2);
+    MTRX A(2,3,"A");
+    A.fillMatrix(1);
+
+    MTRX B(2,3,"B");
+    B.fillMatrix(2);
     
-    //std::cout<<w.name<<"\n";
-    //std::cout<<w<<"\n";
+    MTRX C;
+    C.addMatrices(A,B,"C");
 
     return 0;
 }

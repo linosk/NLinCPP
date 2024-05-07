@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <functional>
 
 #include "logger.hpp"
 
@@ -20,16 +21,30 @@ private:
     int rows;
     int columns;
 
-    Dimensions dimensions;
+    
     Matrix matrix{};
     std::string name;
 
     Logger logger;
 
 public:
-    MTRX(int m, int n, std::string id = "");
+
+
+    bool canBeAdded(const Dimensions dimensionsFirst, const Dimensions dimensionsSecond);
+    bool canBeDotted(const Dimensions dimensionsFirst, const Dimensions dimensionsSecond);
+
+    Dimensions dimensions;
+    //Dimensions dimensions;
+    MTRX(int m = 0, int n = 0, std::string id = "");
     void fillMatrix(int val);
     Dimensions getDimensions(void);
+
+    bool addMatrices(const MTRX A, const MTRX B, const std::string id = "");
+    bool dotProduct(MTRX A, MTRX B);
+
+    // /MTRX(&addMatrices);
+
+    //MTRX(MTRX A,MTRX B,std::function<>);
 
 /*
 private:
