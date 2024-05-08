@@ -58,11 +58,50 @@ bool MTRX::addMatrices(const MTRX A, const MTRX B, const std::string id){
             }
         }
 
+        return true;
+
     }
     return false;
 }
 
-bool dotProduct(MTRX A, MTRX B);
+bool MTRX::dotProduct(const MTRX A, const MTRX B, const std::string id){
+    if(canBeDotted(A.dimensions,B.dimensions)){
+
+        this->matrix.resize(A.dimensions.rows,Vector(B.dimensions.columns));
+        this->dimensions.rows = A.dimensions.rows;
+        this->dimensions.columns = B.dimensions.columns;
+        this->name = id;
+
+        int matchedDimensions = A.dimensions.columns;
+
+        logger.logInfo({"Matrix",this->name,"reshaped for multiplication"});
+        logger.logDebug({"#",this->name,"#"});
+        logger.logDebug({"Number of rows:",std::to_string(this->dimensions.rows)});
+        logger.logDebug({"Number of columns:",std::to_string(this->dimensions.columns)});
+        this->fillMatrix(0);
+
+        logger.logDebug({"#A"});
+        logger.logDebug({"Number of rows:",std::to_string(A.dimensions.rows)});
+        logger.logDebug({"Number of columns:",std::to_string(A.dimensions.columns)});
+        logger.logDebug({"#B"});
+        logger.logDebug({"Number of rows:",std::to_string(B.dimensions.rows)});
+        logger.logDebug({"Number of columns:",std::to_string(B.dimensions.columns)});
+
+        for(int i=0;i<this->dimensions.rows;i++){ // maybe auto loop?
+            for(int j=0;j<this->dimensions.columns;j++){
+                for(int k=0;k<matchedDimensions;k++){
+                    this->matrix[i][j] = this->matrix[i][j] + A.matrix[i][k] * B.matrix[k][j];
+                }
+                logger.logDebug({"Value at [",std::to_string(i),"][",std::to_string(j),"]:",std::to_string(this->matrix[i][j])});
+            }
+        }
+
+        return true;
+
+    }
+    return false;
+
+}
 
 
 //ALGORITHM FOR MATRIX PRODUCT

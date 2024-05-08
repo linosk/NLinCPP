@@ -40,7 +40,7 @@ public:
     Dimensions getDimensions(void);
 
     bool addMatrices(const MTRX A, const MTRX B, const std::string id = "");
-    bool dotProduct(MTRX A, MTRX B);
+    bool dotProduct(const MTRX A, const MTRX B, const std::string id = "");
 
     // /MTRX(&addMatrices);
 
