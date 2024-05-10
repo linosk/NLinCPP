@@ -3,6 +3,5 @@ Structure project:
     - write tests
     - wrtie cmake
     - logging time to each log
-    - make logs more cpp style
     - add namespaces
-    - differentiate between logs more explicitly
+    - time operations could be extracted from logger
