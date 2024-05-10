@@ -9,14 +9,14 @@ TEST(TEST_Logger,logger){
     std::filesystem::remove(".logs/common.log");
     std::filesystem::remove_all(".logs");
 
-    Logger logger2 = Logger("test.log");
+    Logger logger2 = Logger("test");
     EXPECT_TRUE(std::filesystem::exists(".logs/test.log"));
     std::filesystem::remove(".logs/test.log");
     std::filesystem::remove_all(".logs");
 }
 
 TEST(TEST_Logger,logInfo){
-    Logger logger = Logger("test.log");
+    Logger logger = Logger("test");
 
     logger.logInfo({"test"});
 
@@ -35,8 +35,9 @@ TEST(TEST_Logger,logInfo){
     std::filesystem::remove_all(".logs");
 }
 
+
 TEST(TEST_Logger,logWarning){
-    Logger logger = Logger("test.log");
+    Logger logger = Logger("test");
 
     logger.logWarning({"test"});
 
@@ -56,7 +57,7 @@ TEST(TEST_Logger,logWarning){
 }
 
 TEST(TEST_Logger,logError){
-    Logger logger = Logger("test.log");
+    Logger logger = Logger("test");
 
     logger.logError({"test"});
 
@@ -76,7 +77,7 @@ TEST(TEST_Logger,logError){
 }
 
 TEST(TEST_Logger, enableTimeLogging){
-    Logger logger = Logger("test.log");
+    Logger logger = Logger("test");
 
     logger.enableTimeLogging();
 
@@ -90,7 +91,7 @@ TEST(TEST_Logger, enableTimeLogging){
 }
 
 TEST(TEST_Logger, enableDebug){
-    Logger logger = Logger("test.log");
+    Logger logger = Logger("test");
 
     logger.enableDebug();
 
@@ -104,7 +105,7 @@ TEST(TEST_Logger, enableDebug){
 }
 
 TEST(TEST_Logger,logDebug){
-    Logger logger = Logger("test.log");
+    Logger logger = Logger("test");
     logger.enableDebug();
 
     logger.logDebug({"test"});
@@ -125,7 +126,7 @@ TEST(TEST_Logger,logDebug){
 }
 
 TEST(TEST_Logger, enableTimeLogging_enableDebug){
-    Logger logger = Logger("test.log");
+    Logger logger = Logger("test");
 
     logger.enableDebug();
     logger.enableTimeLogging();
@@ -140,7 +141,7 @@ TEST(TEST_Logger, enableTimeLogging_enableDebug){
 }
 
 TEST(TEST_Logger, logInfo_MultipleArguments){
-    Logger logger = Logger("test.log");
+    Logger logger = Logger("test");
 
     logger.logInfo({"test","test",std::to_string(1),std::to_string(-1),std::to_string(0.1),"test"});
 
@@ -160,7 +161,7 @@ TEST(TEST_Logger, logInfo_MultipleArguments){
 }
 
 TEST(TEST_Logger, enableTimeLogging_enableDebug_MultipleArguments){
-     Logger logger = Logger("test.log");
+     Logger logger = Logger("test");
 
     logger.enableDebug();
     logger.enableTimeLogging();
