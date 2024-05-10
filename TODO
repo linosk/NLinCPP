@@ -5,3 +5,4 @@ Structure project:
     - logging time to each log
     - add namespaces
     - time operations could be extracted from logger
+    - TRY TO IMPLEMENT SMART POINTERS SOMEWHERE
