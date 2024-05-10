@@ -20,3 +20,24 @@ TEST(TEST_MTRX,canBeAdded_False){
 
     EXPECT_FALSE(A.canBeAdded(A.dimensions,B.dimensions));
 }
+
+TEST(TEST_MTRX,canBeDotted_True){
+   
+    MTRX A(1,3);
+
+    MTRX B(3,2);
+
+    EXPECT_TRUE(A.canBeDotted(A.dimensions,B.dimensions));
+
+}
+
+TEST(TEST_MTRX,canBeDotted_False){
+    
+    MTRX A(1,3);
+
+    MTRX B(1,3);
+
+    EXPECT_FALSE(A.canBeDotted(A.dimensions,B.dimensions));
+}
+
+//FINISH
