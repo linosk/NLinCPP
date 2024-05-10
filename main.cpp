@@ -2,8 +2,10 @@
 
 int main(void){
 
-    MTRX mtrx(1,2);
-    mtrx.fillMatrix(1);
+    MTRX mtrxa = MTRX(3,3);
+    //MTRX mtrxb = MTRX(3,3,"mtrxb");
+    mtrxa.fillMatrix(1);
+    //mtrxb.fillMatrix(2);
 
     return 0;
 }
