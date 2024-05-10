@@ -6,7 +6,7 @@ Logger::Logger(std::string logNameFile){
         std::filesystem::create_directories(logNameDir);
     }
 
-    this->logNameFilePath = logNameDir + "/" + logNameFile; //linux style paths, wont run on windows
+    this->logNameFilePath = logNameDir + "/" + logNameFile + ".log"; //linux style paths, wont run on windows
 
     if(!std::filesystem::exists(this->logNameFilePath)){
 

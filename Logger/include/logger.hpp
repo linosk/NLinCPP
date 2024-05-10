@@ -32,7 +32,7 @@ public:
         std::string logNameFilePath;
         std::filesystem::path currentPath = std::filesystem::current_path();
 
-        Logger(std::string logNameFile = "common.log");
+        Logger(std::string logNameFile = "common");
 
         void enableDebug(void);
         void disableDebug(void);
