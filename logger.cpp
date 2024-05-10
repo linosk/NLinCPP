@@ -1,4 +1,4 @@
-#include "logger.hpp"
+#include "logger.hpp" //restructure this
 
 Logger::Logger(std::string logNameFile){
 
@@ -13,6 +13,19 @@ Logger::Logger(std::string logNameFile){
         std::ofstream logFile(this->logNameFilePath, std::ios::app);
         logFile.close();
     }
+}
+
+void Logger::enableDebug(void){
+    isDebugEnabled = true;
+}
+
+void Logger::disableDebug(void){
+    isDebugEnabled = false;
+}
+
+void Logger::logDebug(std::string information){
+    if(isDebugEnabled)
+        log(DEBUG, information);
 }
 
 void Logger::logInfo(std::string information){
@@ -36,11 +49,23 @@ void Logger::log(logType type, std::string text){
             break;
     }
 
+    std::string val = getTimeAndDate();
+    logFile<<val;
+    logFile<<val.substr(4,3);
+    logFile<<val.substr(8,2);
+    logFile<<val.substr(11,8);
+    logFile<<val.substr(20,4);
+
     logFile<<" ";
     logFile<<text;
     logFile<<"\n";
 
     logFile.close();
+}
+
+void Logger::logDebug(std::string information, int value){
+    if(isDebugEnabled)
+        log(DEBUG, information, value);
 }
 
 void Logger::logInfo(std::string information, int value){
@@ -64,6 +89,9 @@ void Logger::log(logType type, std::string text, int value){
             break;
     }
 
+    std::string val = getTimeAndDate();
+    logFile<<val.substr(4,3);
+
     logFile<<" ";
     logFile<<text;
     logFile<<" ";
@@ -73,50 +101,33 @@ void Logger::log(logType type, std::string text, int value){
     logFile.close();
 }
 
-//is pretty much c-style logging, change it later, its ok for now
-/*
-void Logger::log(logType type, std::string log, ...){
-
-    va_list args;
-    va_start(args, log);
-
-    std::ofstream logFile(this->logNameFilePath, std::ios::app);
-
-    switch(type){
-        case INFO:
-            logFile<<"[INFO]: ";
-            break;
-        case ERROR:
-            logFile<<"[ERROR]: ";
-            break;
-        case DEBUG:
-            logFile<<"[DEBUG]: ";
-            break;
-        default:
-            break;
-    }
-
-    int index = 0;
-    while(index<log.length()){
-        if(log[index] == '%'){
-            char specifier = log[index+1];
-            switch(specifier){
-                case 'd':
-                    logFile<<va_arg(args,int);
-                    break;
-                default:
-                    break;
-            }
-            index+=2;
-        }
-        else{
-            logFile<<log[index];
-            index++;
-        }
-    }
-
-    logFile<<"\n";
-
-    logFile.close();
+std::string Logger::getTimeAndDate(void){
+    time_t now = time(0);
+    std::string nowString = ctime(&now);
+    return nowString;
 }
-*/
+
+std::string Logger::getDayFromatted(std::string day){
+    if(std::isspace(day[0]))
+        return "0"+day[1];
+    return day;
+}
+
+std::string Logger::getMonthFormatted(std::string month){
+
+
+}
+
+std::string Logger::getTimeAndDateFormatted(void){
+    std::string nowString = getTimeAndDate();
+    // logFile<<val;
+    // logFile<<val.substr(4,3);
+    // logFile<<val.substr(8,2);
+    // logFile<<val.substr(11,8);
+    // logFile<<val.substr(20,4);
+    std::string nowStringFormatted;
+    //nowStringFormatted = nowStringFormatted + nowString.substr(11,8);
+    std::string time = nowString.substr(11,8);
+    std::string day = getDayFromatted(nowString.substr(8,2));
+    std::string month = getMonthFormatted(nowString.substr(4,3));
+}
