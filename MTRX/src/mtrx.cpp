@@ -1,8 +1,8 @@
 #include "mtrx.hpp"
 //MAYBE DELETE DIMENSIONS, IT SEEMS OVERCOMPLICATED
-MTRX::MTRX(int m, int n, std::string id) : dimensions({m,n}), name(id), logger("mtrx.log") {
-    logger.enableDebug();
-    logger.enableTimeLogging();
+MTRX::MTRX(int m, int n, std::string id) : dimensions({m,n}), name(id), logger("mtrx") {
+    // logger.enableDebug();
+    // logger.enableTimeLogging();
     matrix.resize(this->dimensions.rows,Vector(this->dimensions.columns)); //can be abstracted
     logger.logInfo({"Matrix",this->name,"created succesfully"});
     logger.logDebug({"#",this->name,"#"});
